@@ -10,5 +10,5 @@ import { LoginComponent } from "./page/auth/login/login.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'E-Commerce';
+  title = 'E-Commerce'; 
 }
