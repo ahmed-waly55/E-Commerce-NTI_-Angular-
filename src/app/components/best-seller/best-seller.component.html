@@ -1,0 +1,23 @@
+<h1 class="text-center m-auto mt-4 p-2 bg-dark text-white w-25">Best Sellers</h1>
+@if (products.length > 0) {
+  <div class="row m-auto container mt-4">
+    @for (product of products; track product._id) {
+      <div class="card m-2 col-4" style="width: 18rem;">
+        <img [src]="product.cover" class="card-img-top w-100 h-50" [alt]="product.name">
+        <div class="card-body position-relative">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}...</p>
+          <p class="card-text">price : {{ product.price| currency:'EUR' }}</p>
+          <p class="card-text">{{ product.rateAvg | number:'1.1-1'}} &star; - count {{ product.rating }}</p>
+          <div class="position-absolute btn-card">
+            <a [routerLink]="['/products',product._id]" class="btn btn-primary mx-2">See More</a>
+            <button class="btn btn-success mx-2">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+} @else {
+  <h2 class="text-center text-danger my-5 p-2">try again later...</h2>
+}

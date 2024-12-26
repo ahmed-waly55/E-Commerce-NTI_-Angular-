@@ -29,6 +29,7 @@ login(formData:FormGroup){
       localStorage.setItem('token', res.token);
         this._router.navigate(['/home'])
         this.toastr.success("login successful");
+        // this.toastr.success(res);
 
       
     },
