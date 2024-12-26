@@ -26,15 +26,12 @@ private readonly authRoute:string = '';
     })
   }
 
-<<<<<<< HEAD
-   
-
-=======
   signup(formData:any):Observable<any>{
-    return this._httpClient.post(`${this.baseurl}${this.authRoute}/signup`,formData , {
+    return this._httpClient.post(`${this.baseurl}${this.authRoute}/signup`, formData, {
       headers: {'X-CSRF-Token': `${Cookies.get('cookies')}`},
       withCredentials: true
     })
->>>>>>> auth/signup
   }
+
+
 }
