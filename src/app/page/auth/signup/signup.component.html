@@ -10,34 +10,78 @@
         <form  [formGroup]="signupForm" (ngSubmit)="signup(signupForm)" >
           <div class="mb-3">
             <label for="username" class="form-label">username </label>
-            <input formControlName="username" type="username" class="form-control" id="username" placeholder="Enter your username ">
-           
+            <input formControlName="username" type="text" class="form-control" id="username" placeholder="Enter your username ">
+            @if (signupForm.get('username')?.errors !== null && signupForm.get('username')?.touched) {
+              @if (signupForm.get('username')?.errors?.['required']) {
+                <p class="text-danger mt-2">username required</p>
+              }
+            }
+            @if (usernameError !== '') {
+              <p class="text-danger mt-2">{{ usernameError }}</p>
+            }
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email </label>
             <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your Email ">
-           
+            @if (signupForm.get('email')?.errors !== null && signupForm.get('email')?.touched) {
+              @if (signupForm.get('email')?.errors?.['required']) {
+                <p class="text-danger mt-2">email required</p>
+              }
+              @if (signupForm.get('email')?.errors?.['email']) {
+                <p class="text-danger mt-2">invalid email</p>
+              }
+            }
+            @if (emailError !== '') {
+              <p class="text-danger mt-2">{{ emailError }}</p>
+            }
           </div>
           <div class="mb-3">
             <label for="name" class="form-label">Name </label>
-            <input formControlName="name" type="name" class="form-control" id="name" placeholder="Enter your Name ">
-           
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter your Name ">
+            @if (signupForm.get('name')?.errors !== null && signupForm.get('name')?.touched) {
+              @if (signupForm.get('name')?.errors?.['required']) {
+                <p class="text-danger mt-2">name required</p>
+              }
+            }
+            @if (nameError !== '') {
+              <p class="text-danger mt-2">{{ nameError }}</p>
+            }
           </div>
   
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter your password">
-            
+            @if (signupForm.get('password')?.errors !== null && signupForm.get('password')?.touched) {
+              @if (signupForm.get('password')?.errors?.['required']) {
+                <p class="text-danger mt-2">password required</p>
+              }
+              @if (signupForm.get('password')?.errors?.['minlength'] || signupForm.get('password')?.errors?.['maxlength']) {
+                <p class="text-danger mt-2">password minlength 6</p>
+              }
+            }
+            @if (passwordError !== '') {
+              <p class="text-danger mt-2">{{ passwordError }}</p>
+            }
            
           </div>
           <div class="mb-3">
             <label for="confirmPassword" class="form-label">confirmPassword</label>
-            <input formControlName="confirmPassword" type="confirmPassword" class="form-control" id="confirmPassword" placeholder="Enter your confirmPassword">
-            
+            <input formControlName="confirmPassword" type="Password" class="form-control" id="confirmPassword" placeholder="Enter your confirmPassword">
+            @if (signupForm.get('confirmPassword')?.errors !== null && signupForm.get('confirmPassword')?.touched) {
+              @if (signupForm.get('confirmPassword')?.errors?.['required']) {
+                <p class="text-danger mt-2">confirmPassword required</p>
+              }
+              @if (signupForm.get('confirmPassword')?.errors?.['minlength'] || signupForm.get('confirmPassword')?.errors?.['maxlength']) {
+                <p class="text-danger mt-2">password minlength 6 </p>
+              }
+            }
+            @if (confirmPasswordError !== '') {
+              <p class="text-danger mt-2">{{ confirmPasswordError }}</p>
+            }
            
           </div>
   
-          <button   class="btn btn-danger w-100 mb-3">Create User</button>
+          <button [disabled]="signupForm.invalid"  class="btn btn-danger w-100 mb-3">Create User</button>
           <button type="button" class="btn btn-outline-dark w-100 d-flex align-items-center justify-content-center">
             <img src="https://www.google.com/favicon.ico" alt="Google" class="me-2" style="width: 20px;"> sign up with Google
           </button>
