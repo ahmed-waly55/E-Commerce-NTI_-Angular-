@@ -57,7 +57,7 @@
               <p class="text-danger mt-2">password required</p>
             }
             @if (signupForm.get('password')?.errors?.['minlength'] || signupForm.get('password')?.errors?.['maxlength']) {
-              <p class="text-danger mt-2">password length 6 :2 0</p>
+              <p class="text-danger mt-2">password minlength 6</p>
             }
           }
           @if (passwordError !== '') {
@@ -73,7 +73,7 @@
               <p class="text-danger mt-2">confirmPassword required</p>
             }
             @if (signupForm.get('confirmPassword')?.errors?.['minlength'] || signupForm.get('confirmPassword')?.errors?.['maxlength']) {
-              <p class="text-danger mt-2">password length 6 :2 0</p>
+              <p class="text-danger mt-2">password minlength 6</p>
             }
           }
           @if (confirmPasswordError !== '') {
