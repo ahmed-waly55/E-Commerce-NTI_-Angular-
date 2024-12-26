@@ -10,7 +10,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" >
           <div class="mb-3">
             <label for="email" class="form-label">Email or Phone Number</label>
-            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email or phone number">
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email or username">
             @if(loginForm.get('email')?.errors!==null && loginForm.get('email')?.touched){
                 @if(loginForm.get('email')?.errors?.['required']){
                     <p class="text-danger mt-1">username or email required</p>
