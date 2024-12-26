@@ -19,7 +19,7 @@ export class LoginComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    username: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
   
@@ -34,8 +34,10 @@ login(formData:FormGroup){
       
     },
     error:err =>{
-      // console.log(err.error);
+      console.log(err.error);
+      // this.toastr.error(err.error.errors[0].msg);
       this.toastr.error(err.error.message);
+      // console.log(err.error.errors[0].msg);
 
 
       
