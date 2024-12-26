@@ -5,6 +5,7 @@ export const routes: Routes = [
     {path:'home',title: 'Home', loadComponent:()=>import ('./page/home/home.component').then(c => c.HomeComponent)},
     {path: 'login', title: 'login', loadComponent:()=>import ('./page/auth/login/login.component').then(c => c.LoginComponent)},
     {path: 'signup', title: 'signup', loadComponent:()=>import ('./page/auth/signup/signup.component').then(c => c.SignupComponent)},
+    {path: 'forgot-password', title: 'Forgot Password', loadComponent:()=>import ('./page/auth/forgot-password/forgot-password.component').then(c => c.ForgotPasswordComponent)},
 
     {path:'products',children:[
         {path:'',title:'products',loadComponent:()=>import ('./page/products/products.component').then(c => c.ProductsComponent)},
