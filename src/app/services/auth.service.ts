@@ -12,6 +12,7 @@ import Cookies from 'js-cookie'
 export class AuthService  {
 private readonly baseurl:string = '';
 private readonly authRoute:string = '';
+
   constructor(private _apisService: ApisService, private _httpClient: HttpClient) { 
     this.baseurl = _apisService.baseurl;
     this.authRoute = _apisService.authRoute;
@@ -23,8 +24,17 @@ private readonly authRoute:string = '';
       headers: {'X-CSRF-Token': `${Cookies.get('cookies')}`},
       withCredentials: true
     })
+  }
 
+<<<<<<< HEAD
    
 
+=======
+  signup(formData:any):Observable<any>{
+    return this._httpClient.post(`${this.baseurl}${this.authRoute}/signup`,formData , {
+      headers: {'X-CSRF-Token': `${Cookies.get('cookies')}`},
+      withCredentials: true
+    })
+>>>>>>> auth/signup
   }
 }

@@ -7,13 +7,14 @@
       <div class="col-md-6 bg-white p-4 shadow-sm rounded">
         <h2 class="mb-3 text-center">Create Account</h2>
         <p class="text-muted text-center">Enter your details below</p>
-        <form   >
+        <form  [formGroup]="signupForm" (ngSubmit)="signup(signupForm)" >
           <div class="mb-3">
-            <label for="email" class="form-label">Email or Phone Number</label>
-            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email or phone number">
+            <label for="username" class="form-label">username </label>
+            <input formControlName="username" type="username" class="form-control" id="username" placeholder="Enter your username ">
            
           </div>
           <div class="mb-3">
+<<<<<<< HEAD
             <label for="name" class="form-label">Name</label>
             <input formControlName="name" type="name" class="form-control" id="name" placeholder="Enter your name ">
            
@@ -21,12 +22,27 @@
           <div class="mb-3">
             <label for="password" class="form-label">password </label>
             <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter your password ">
+=======
+            <label for="email" class="form-label">Email </label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your Email ">
+           
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name </label>
+            <input formControlName="name" type="name" class="form-control" id="name" placeholder="Enter your Name ">
+>>>>>>> auth/signup
            
           </div>
   
           <div class="mb-3">
             <label for="Confirm Password" class="form-label">Confirm Password</label>
             <input formControlName="Confirm Password" type="Confirm Password" class="form-control" id="Confirm Password" placeholder="Enter your Confirm Password">
+            
+           
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">confirmPassword</label>
+            <input formControlName="confirmPassword" type="confirmPassword" class="form-control" id="confirmPassword" placeholder="Enter your confirmPassword">
             
            
           </div>
