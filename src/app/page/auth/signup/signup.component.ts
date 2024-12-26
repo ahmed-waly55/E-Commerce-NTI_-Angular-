@@ -43,7 +43,6 @@ export class SignupComponent implements OnInit {
         this.toastr.success("Successful Registration");
         this._authService.saveLogin();
 
-
       },
       error:err =>{
         // console.log(err.error.errors);

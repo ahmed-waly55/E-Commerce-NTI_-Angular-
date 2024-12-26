@@ -19,7 +19,7 @@ export class LoginComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    username: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
   
@@ -29,6 +29,8 @@ login(formData:FormGroup){
       localStorage.setItem('token', res.token);
         this._router.navigate(['/home'])
         this.toastr.success("login successful");
+        // this.toastr.success(res);
+        this._authService.saveLogin();
 
       
     },
