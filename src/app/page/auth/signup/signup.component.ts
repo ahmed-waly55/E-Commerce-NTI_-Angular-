@@ -22,20 +22,38 @@ export class SignupComponent implements OnInit {
     username:new FormControl(null,[Validators.required]),
     email:new FormControl(null,[Validators.required,Validators.email]),
     name:new FormControl(null,[Validators.required]),
-    password:new FormControl(null,[Validators.required,Validators.maxLength(6)]),
-    confirmPassword :new FormControl(null,[Validators.required,Validators.maxLength(6)])
+    password:new FormControl(null,[Validators.required,Validators.minLength(6)]),
+    confirmPassword :new FormControl(null,[Validators.required,Validators.minLength(6)])
 
   });
+
+  usernameError: string = '';
+  nameError: string = '';
+  emailError: string = '';
+  passwordError: string = '';
+  confirmPasswordError: string = '';
+
+
 
   signup(formData:FormGroup){
     this._authService.signup(formData.value).subscribe({
       next:(res) => {
         localStorage.setItem('token', res.token);
         this._router.navigate(['/home']);
+        this.toastr.success("Successful Registration");
+
       },
       error:err =>{
-        this.toastr.error(err.error.message);
-
+        // console.log(err.error.errors);
+        if (err.error.errors) {
+          err.error.errors.map((error: any) => {
+            if (error.path === 'username') this.usernameError = error.msg
+            else if (error.path === 'name') this.nameError = error.msg
+            else if (error.path === 'email') this.emailError = error.msg
+            else if (error.path === 'password') this.passwordError = error.msg
+            else if (error.path === 'confirmPassword') this.confirmPasswordError = error.msg
+          })
+        }
       }
     })
   }
