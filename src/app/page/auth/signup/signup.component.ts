@@ -41,6 +41,8 @@ export class SignupComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this._router.navigate(['/home']);
         this.toastr.success("Successful Registration");
+        this._authService.saveLogin();
+
 
       },
       error:err =>{
