@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
 import { ApisService } from './api.service';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
-  private readonly baseurl:string = '';
-  private readonly productsRoute: string = '';
-
-  constructor(private _apiService:ApisService , private _HttpClient:HttpClient) {
-    this.baseurl = _apiService.baseurl;
-    this.productsRoute = _apiService.productsRoute;
-   }
-
-   getProducts(page: number = 1, limit: number = 20, sort: string = 'name', search: string): Observable<any> {
-    return this._HttpClient.get(`${this.baseurl}${this.productsRoute}?page=${page}&limit=${limit}&sort=${sort}&search=${search}`, {withCredentials: true})
+  private baseurl: string = '';
+  private productsRoute: string = '';
+  constructor(
+    private _ApisService: ApisService,
+    private _HttpClient: HttpClient
+  ) {
+    this.baseurl = _ApisService.baseurl;
+    this.productsRoute = _ApisService.productsRoute;
   }
 
-  getProduct(productId: string): Observable<any> {
-    return this._HttpClient.get(`${this.baseurl}${this.productsRoute}/${productId}`, {withCredentials: true})
+  getProducts(
+    page: number = 1,
+    limit: number = 20,
+    sort: string = 'name',
+    search: string
+  ) {
+  return  this._HttpClient.get(
+      `${this.baseurl}${this.productsRoute}?page=${page}&limit=${limit}&sort=${sort}&search=${search}`,
+      { withCredentials: true }
+    );
   }
-
 }

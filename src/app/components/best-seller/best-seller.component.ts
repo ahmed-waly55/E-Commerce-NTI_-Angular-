@@ -1,41 +1,35 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-best-seller',
   standalone: true,
-  imports: [RouterLink,CurrencyPipe,DecimalPipe],
+  imports: [DecimalPipe, RouterLink, CurrencyPipe],
   templateUrl: './best-seller.component.html',
-  styleUrl: './best-seller.component.scss'
+  styleUrl: './best-seller.component.scss',
 })
-export class BestSellerComponent implements OnInit , OnDestroy {
-
+export class BestSellerComponent {
   products: any[] = [];
   private subscription: any;
+  constructor(private _ProductsService: ProductsService) {}
 
-  constructor(private _productsService: ProductsService){
-
-  }
   loadProducts() {
-    this.subscription = this._productsService.getProducts(1, 20, '-sold', '').subscribe({
-      next: (res) => {
-        this.products = res.data;
-        console.log(this.products);
-        
-      }
-    })
+    this.subscription = this._ProductsService
+      .getProducts(1, 20, '-sold', '')
+      .subscribe({
+        next: (res: any) => {
+          this.products = res.data;
+        },
+      });
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.loadProducts();
-
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
-
   }
-
 }
