@@ -1,0 +1,86 @@
+/* General Container Styles */
+.profile-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  
+  .nav-link {
+    color: #6c757d;
+    font-size: 14px;
+    padding: 8px 0;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    color: #e63946;
+  }
+  
+  .nav-link.active {
+    color: #e63946;
+    font-weight: bold;
+  }
+  
+  /* Form Title */
+  .form-title {
+    color: #333333;
+    font-weight: bold;
+  }
+  
+  /* Form Styles */
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+  }
+  
+  input.form-control {
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+  }
+  
+  input.form-control:focus {
+    border-color: #e63946;
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.4);
+  }
+  
+  /* Button Styles */
+  .button-group .btn {
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .cancel-btn {
+    border: 1px solid #e0e0e0;
+    color: #555555;
+  }
+  
+  .save-btn {
+    background-color: #e63946;
+    color: #ffffff;
+  }
+  
+  .save-btn:hover {
+    background-color: #d62828;
+  }
+  

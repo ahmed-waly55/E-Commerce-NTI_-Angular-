@@ -9,13 +9,8 @@
         <p class="text-muted text-center">Enter your details below</p>
         <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" >
           <div class="mb-3">
-<<<<<<< HEAD
-            <label for="username" class="form-label">username or Phone Number</label>
-            <input formControlName="username" type="username" class="form-control" id="username" placeholder="Enter your username or phone number">
-=======
             <label for="username" class="form-label">Email or Phone Number</label>
             <input formControlName="username" type="username" class="form-control" id="username" placeholder="Enter your Email or User">
->>>>>>> stage
             @if(loginForm.get('username')?.errors!==null && loginForm.get('username')?.touched){
                 @if(loginForm.get('username')?.errors?.['required']){
                     <p class="text-danger mt-1">username or email required</p>

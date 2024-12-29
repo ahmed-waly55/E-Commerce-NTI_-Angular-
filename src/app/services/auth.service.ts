@@ -37,8 +37,6 @@ loggedUser = new BehaviorSubject(null);
       withCredentials: true
     })
   }
-<<<<<<< HEAD
-=======
 
   logout(){
     localStorage.removeItem('token');
@@ -54,5 +52,4 @@ loggedUser = new BehaviorSubject(null);
   }
 
 
->>>>>>> stage
 }
