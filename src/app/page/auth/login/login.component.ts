@@ -30,6 +30,7 @@ login(formData:FormGroup){
         this._router.navigate(['/home'])
         this.toastr.success("login successful");
         // this.toastr.success(res);
+        this._authService.saveLogin();
 
       
     },
