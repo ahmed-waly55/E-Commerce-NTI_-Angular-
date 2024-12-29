@@ -2,3 +2,23 @@
     bottom: 3%;
     left: 5%;
   }
+
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border-radius: 10px; 
+  }
+  
+  .card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .card-img-top {
+    border-radius: 10px 10px 0 0; 
+  }
+  
+  .card-body {
+    padding: 20px; 
+  }
+  
