@@ -12,6 +12,7 @@ import {jwtDecode} from 'jwt-decode'
 export class AuthService  {
 private readonly baseurl:string = '';
 private readonly authRoute:string = '';
+// private readonly forgetPasword:string = '';
 
 loggedUser = new BehaviorSubject(null);
 
@@ -51,5 +52,30 @@ loggedUser = new BehaviorSubject(null);
     })
   }
 
+  forgetPassword(formData: any): Observable<any> {
+    return this._httpClient.post(`${this.baseurl}${this.authRoute}/forget-password?lang=en`, formData, {
+      headers: {'X-CSRF-Token': `${Cookies.get('cookies')}`},
+      withCredentials: true
+    })
+  }
 
+  verifyCode(formData: any): Observable<any> {
+    return this._httpClient.post(`${this.baseurl}${this.authRoute}/verify-code?lang=en`, formData, {
+      headers: {
+        'X-CSRF-Token': `${Cookies.get('cookies')}`,
+        'Authorization': `Bearer ${localStorage.getItem('reset')}`
+      },
+      withCredentials: true
+    })
+  }
+
+  resetPassword(formData: any): Observable<any> {
+    return this._httpClient.post(`${this.baseurl}${this.authRoute}/reset-password?lang=en`, formData, {
+      headers: {
+        'X-CSRF-Token': `${Cookies.get('cookies')}`,
+        'Authorization': `Bearer ${localStorage.getItem('reset')}`
+      },
+      withCredentials: true
+    })
+  }
 }
