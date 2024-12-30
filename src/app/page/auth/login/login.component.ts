@@ -35,8 +35,10 @@ login(formData:FormGroup){
       
     },
     error:err =>{
-      // console.log(err.error);
+      console.log(err.error);
+      // this.toastr.error(err.error.errors[0].msg);
       this.toastr.error(err.error.message);
+      // console.log(err.error.errors[0].msg);
 
 
       

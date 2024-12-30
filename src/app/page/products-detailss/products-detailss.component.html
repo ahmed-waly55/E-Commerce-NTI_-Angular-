@@ -1,1 +1,113 @@
-<p>products-detailss works!</p>
+<div class="container my-4">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">{{product.subcategory.name}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <!-- Left Section: Product Images -->
+    <div class="col-md-5">
+      <div class="mb-3">
+        <img class="img-fluid" [src]="product.cover" [alt]="product.name">
+      </div>
+
+      
+      <div class="d-flex">
+        @for (image of product.images; track image) {
+            <img width="20%" class="img-thumbnail me-2" [src]="image" [alt]="product.name">
+        }
+        <!-- <img src="auth.svg" class="img-thumbnail me-2"
+          style="width: 20%; cursor: pointer;"
+          alt="Thumbnail"
+        /> -->
+      </div>
+    </div>
+
+    <!-- Right Section: Product Details -->
+    <div class="col-md-7">
+      <h2>{{product.name}}</h2>
+      <!-- <p class="text-muted"> <small>({{product.createdAt}} Reviews)</small></p> -->
+      @for (review of product.reviews; track review._id) {
+        <div>
+          <h4>{{ review.user.name }}</h4>
+          <p>{{ review.comment }} - {{ review.rate }}&star;</p>
+          <p>{{ review.createdAt }}</p>
+          <hr class="my-4">
+        </div>
+      } @empty {
+        <h2>No Reviews for this product yet.</h2>
+      }
+       <!-- <div class="rating">
+          <input formControlName="rate" type="radio" id="star5" name="rate" value="5"/>
+          <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+          <input formControlName="rate" type="radio" id="star4" name="rate" value="4"/>
+          <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+          <input formControlName="rate" type="radio" id="star3" name="rate" value="3"/>
+          <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+          <input formControlName="rate" type="radio" id="star2" name="rate" value="2"/>
+          <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+          <input formControlName="rate" type="radio" id="star1" name="rate" value="1"/>
+          <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
+          <button  class="btn btn-success shadow mt-2 mx-3">Add Review</button>
+         
+              <p class="text-danger mt-2">Rate required</p>
+            
+          
+        </div> -->
+
+
+      <h3 class="text-danger">{{product.price}}</h3>
+      <p>PlayStation 5 Controller skin - high quality vinyl with air channel release for easy bubble-free installs & mess-free removal.</p>
+
+     
+
+      
+      <div class="d-flex align-items-center mb-3">
+        <input
+          type="number"
+          class="form-control w-25 me-3"
+          min="1"
+          style="max-width: 70px;"
+        />
+        <button class="btn btn-danger me-2" >Buy Now</button>
+        <button class="btn btn-outline-secondary" >
+          <i class="bi bi-heart"></i> Wishlist
+        </button>
+      </div>
+
+      <div class="mb-2">
+        <i class="bi bi-truck"></i> <span>Free Delivery (See availability)</span>
+      </div>
+      <div>
+        <i class="bi bi-arrow-return-left"></i> <span>30-day return policy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Items Section -->
+  <div class="mt-5">
+    <h4>Related Items</h4>
+    <div class="row">
+      <div class="col-md-3" >
+        <div class="card h-100">
+          <div class="position-relative">
+            <span class="badge bg-danger position-absolute" style="top: 10px; left: 10px;">
+             20
+            </span>
+            <img src="auth.svg" class="card-img-top" alt="Related Product" />
+          </div>
+          <div class="card-body text-center">
+            <h6 class="card-title">ukjgkgk</h6>
+            <p class="text-danger fw-bold">c</p>
+            <p class="text-muted"><del>l00</del></p>
+            <button class="btn btn-primary btn-sm w-100">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
