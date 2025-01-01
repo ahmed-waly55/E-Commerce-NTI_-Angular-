@@ -7,7 +7,11 @@ export const routes: Routes = [
     {path: 'login',
     title: 'login',
     loadComponent:()=>import ('./page/auth/login/login.component').then(c => c.LoginComponent)},
-    
+    {
+        path: 'auth/google',
+        title: 'google login',
+        loadComponent: () => import('./page/auth/google/google.component').then(c => c.GoogleComponent)
+      },
 
     {path: 'signup', title: 'signup', loadComponent:()=>import ('./page/auth/signup/signup.component').then(c => c.SignupComponent)},
     {path: 'forgot-password', title: 'Forgot Password', loadComponent:()=>import ('./page/auth/forgot-password/forgot-password.component').then(c => c.ForgotPasswordComponent)},

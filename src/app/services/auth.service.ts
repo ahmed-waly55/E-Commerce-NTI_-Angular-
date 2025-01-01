@@ -27,10 +27,14 @@ export class AuthService {
     if (localStorage.getItem('token')) this.saveLogin();
   }
 
+
+
   saveLogin() {
     const token: any = localStorage.getItem('token');
     const decodedToken: any = jwtDecode(token);
     if (decodedToken.exp <= Math.trunc(Date.now() / 1000)) this.logout();
+  
+ 
     else this.loggedUser.next(decodedToken);
     // console.log(decodedToken);
   }
@@ -49,7 +53,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.loggedUser.next(null);
-    this._router.navigate(['/']);
+    this._router.navigate(['/home']);
   }
 
   signup(formData: any): Observable<any> {
