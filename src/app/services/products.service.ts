@@ -22,7 +22,7 @@ export class ProductsService {
     sort: string = 'name',
     search: string
   ) {
-  return  this._HttpClient.get(
+    return this._HttpClient.get(
       `${this.baseurl}${this.productsRoute}?page=${page}&limit=${limit}&sort=${sort}&search=${search}`,
       { withCredentials: true }
     );

@@ -3,44 +3,24 @@
 <div class="container mt-5 ps-5">
   <div class="row ">
     @for (product of products; track product._id) {
-    <div class="card m-2 col-md-3 " style="width: 18rem;">
+    <div class="card m-3 col-md-3 " style="width: 18rem;">
+
       <img [src]="product.cover" class="card-img-top w-100 h-50" [alt]="product.name">
       <div class="card-body position-relative">
-        <h5 class="card-title">{{ product.name }}</h5>
+        <h5 class="card-title">{{ product.name.slice(0,19)}}</h5>
         <p class="card-text">{{ product.description?.slice(0, 50) || 'No description available' }}...</p>
         <p class="card-text">Price: {{ product.price | currency: 'EUR' }}</p>
         <p class="card-text">{{ product.rateAvg | number: '1.1-1' }} ★ - Count: {{ product.rating }}</p>
-        <div class="position-absolute btn-card">
+        <div class="position-absolute btn-card start-0">
           <a [routerLink]="['/products', product._id]" class="btn btn-primary mx-2">See More</a>
           <button class="btn btn-success mx-2">Add to Cart</button>
         </div>
       </div>
-
     </div>
     }
   </div>
 </div>
 
 } @else {
-<h2 class="text-center text-danger my-5 p-2">try again later...</h2>
+<h2 class="text-center w-25 m-auto bg-dark mt-4 p-3 text-danger text-capitalize">try again later ...</h2>
 }
-
-<!-- <div className="product cursor-pointer px-2 py-3 bg-light bg-opacity-25 shadow mx-auto rounded-4 ">
-  <Link to={`/ProductDetails/${product._id}`}>
-
-    <img className="w-100" src={product.imageCover} alt={product.title} />
-    <span className="text-main fw-bold font-sm">{product.category?.name}</span>
-    <h3 className="h6 fw-bolder">{product.title.split(' ').slice(0, 2).join(' ')}</h3>
-    <div className="d-flex justify-content-between">
-      <span className="text-muted">{product.price} <span className="text-main">EGP</span> </span>
-      <span>
-        {product.ratingsAverage} <i className="fas fa-star rating-color"></i>
-      </span>
-    </div>
-
-  </Link>
-  <button onClick={() => addProduct(product._id)} className="btn bg-main text-white w-100">
-    + Add
-  </button>
-
-</div> -->
