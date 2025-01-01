@@ -23,6 +23,7 @@ loggedUser = new BehaviorSubject(null);
 
   }
 
+  
   saveLogin(){
     const token:any = localStorage.getItem('token');
     const decodedToken:any = jwtDecode(token);
@@ -42,7 +43,7 @@ loggedUser = new BehaviorSubject(null);
   logout(){
     localStorage.removeItem('token');
     this.loggedUser.next(null);
-    this._router.navigate(['/']);
+    this._router.navigate(['/home']);
   }
 
   signup(formData:any):Observable<any>{
