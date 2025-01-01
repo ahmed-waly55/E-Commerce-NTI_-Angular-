@@ -1,50 +1,52 @@
 import { Component, inject } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule],
-templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  imports: [RouterLink, ReactiveFormsModule],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-
-
-  constructor(private _authService: AuthService, private _router: Router,private toastr: ToastrService){
-
-  }
+  constructor(
+    private _authService: AuthService,
+    private _router: Router,
+    private toastr: ToastrService
+  ) {}
 
   loginForm = new FormGroup({
     username: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-  })
-  
-login(formData:FormGroup){
-  this._authService.login(formData.value).subscribe({
-    next:(res) => {
-      localStorage.setItem('token', res.token);
-        this._router.navigate(['/home'])
-        this.toastr.success("login successful");
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+  });
+
+  login(formData: FormGroup) {
+    this._authService.login(formData.value).subscribe({
+      next: (res) => {
+        localStorage.setItem('token', res.token);
+        this._router.navigate(['/home']);
+        this.toastr.success('login successful');
         // this.toastr.success(res);
         this._authService.saveLogin();
-
-      
-    },
-    error:err =>{
-      console.log(err.error);
-      // this.toastr.error(err.error.errors[0].msg);
-      this.toastr.error(err.error.message);
-      // console.log(err.error.errors[0].msg);
-
-
-      
-    }
-  })
-  // console.log(formData)
+      },
+      error: (err) => {
+        console.log(err.error);
+        // this.toastr.error(err.error.errors[0].msg);
+        this.toastr.error(err.error.message);
+        // console.log(err.error.errors[0].msg);
+      },
+    });
+    // console.log(formData)
+  }
 }
-}
- 

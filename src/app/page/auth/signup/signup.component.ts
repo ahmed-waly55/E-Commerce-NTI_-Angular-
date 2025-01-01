@@ -1,7 +1,7 @@
+import { AuthService } from './../../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
