@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class ApisService {
   constructor() {}
 
-  baseurl: string = 'http://localhost:3000';
+  readonly baseurl: string = 'http://localhost:3000';
   readonly authRoute: string = '/api/v1/auth';
-  productsRoute: string = '/api/v1/products';
+  // readonly forgotPasword: string = '/api/v1/forget-pasword';
+  readonly productsRoute: string = '/api/v1/products';
 }
+ 

@@ -4,13 +4,13 @@ import { ProductsService } from '../../services/products.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-products-details',
+  selector: 'app-products-detailss',
   standalone: true,
   imports: [CurrencyPipe, DecimalPipe, DatePipe],
-  templateUrl: './products-details.component.html',
-  styleUrl: './products-details.component.scss',
+  templateUrl: './products-detailss.component.html',
+  styleUrl: './products-detailss.component.scss',
 })
-export class ProductsDetailsComponent implements OnInit, OnDestroy {
+export class ProductsDetailssComponent implements OnInit, OnDestroy {
   private subscription: any;
   private productId: string = '';
   product: any;
