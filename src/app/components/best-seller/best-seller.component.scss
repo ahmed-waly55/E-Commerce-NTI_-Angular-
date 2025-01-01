@@ -3,6 +3,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     border-radius: 10px; 
+    cursor: pointer;
   }
   
   .card:hover {
@@ -14,4 +15,6 @@
     border-radius: 10px 10px 0 0; 
   }
   
-  
+  .card img {
+    height: 50vmin;
+  }

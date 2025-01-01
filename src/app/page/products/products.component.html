@@ -1,0 +1,121 @@
+<!-- <div class="container mt-5 ">
+  <input (keyup)="searchProducts(search.value)" #search class="form-control w-50 m-auto rounded-5 py-2" type="search"
+    placeholder="Search" aria-label="Search">
+
+  @if (products.length > 0) {
+  <div class="row m-auto  mt-4">
+    @for (product of products; track product._id) {
+    <div class="card m-2 col-4" style="width: 18rem;">
+      <img [src]="product.cover" class="card-img-top w-100 h-50" [alt]="product.name">
+      <div class="card-body position-relative">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}...</p>
+        <p class="card-text">price : {{ product.price|currency:'EUR' }}</p>
+        <p class="card-text">{{ product.rateAvg|number:'1.1-1' }} &star; - count {{ product.rating }}</p>
+        <div class="position-absolute btn-card">
+          <a [routerLink]="[product._id]" class="btn btn-primary mx-2">See More</a>
+          <button class="btn btn-success mx-2">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  } @else {
+  <h2 class="text-center text-danger text-capitalize bg-dark rounded-3 w-25 m-auto my-5 p-3">try again later...</h2>
+  }
+
+  <div class="w-25 m-auto my-3 ">
+    <ul class="pagination pagination-lg ">
+      <li class="page-item ">
+        <button (click)="changePage(1)" class="page-link">First</button>
+      </li>
+      @if (pagination.prev) {
+      <li class="page-item">
+        <button (click)="changePage(pagination.prev)" class="page-link">{{ pagination.prev }}</button>
+      </li>
+      }
+      <li class="page-item">
+        <button disabled class="page-link">{{ pagination.currentPage }}</button>
+      </li>
+      @if (pagination.next) {
+      <li class="page-item">
+        <button (click)="changePage(pagination.next)" class="page-link">{{ pagination.next }}</button>
+      </li>
+      }
+      <li class="page-item">
+        <button (click)="changePage(pagination.totalPages!)" class="page-link">Last</button>
+      </li>
+    </ul>
+  </div>
+
+
+
+</div> -->
+
+
+<div class="container mt-4">
+  <div class="row gy-3">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between">
+        <h1 class="text-uppercase fw-bolder fs-1">products</h1>
+        <input (keyup)="searchProducts(search.value)" #search class="form-control w-50 rounded-5 py-1" type="search"
+          placeholder="Search" aria-label="Search">
+      </div>
+      <hr class="text-danger">
+    </div>
+    @if(products.length>0){
+    @for (product of products; track product._id) {
+    <div class="col-md-3 ">
+      <div class="item shadow rounded-2 px-3 py-4">
+        <img [src]="product.cover" class="w-100 rounded-top-2 img-thumbnail " alt="product.name">
+        <div class="contant p-2">
+          <p class="text-body fw-bolder fs-5 text-dander">{{product.name}}</p>
+          <p class="text-danger">{{product.subcategory.name}}</p>
+          <p class="text-dark">{{ product.description?.slice(0, 50) || 'No description available' }}...</p>
+          <p>Price: {{ product.price | currency: 'EUR' }}</p>
+          <p>{{ product.rateAvg | number: '1.1-1' }}
+            <i class="fa-solid fa-star text-warning"></i>
+          </p>
+          <p> Count: {{ product.rating }}</p>
+          <div class="d-flex justify-content-start">
+            <a [routerLink]="[product._id]" class="btn btn-primary me-3">See More</a>
+            <button class="btn btn-success mx-2">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    }
+    }@else {
+    <h2 class="text-center text-danger text-capitalize bg-dark rounded-3 w-25 m-auto my-5 p-3">try again later...</h2>
+    }
+
+  </div>
+
+  <!-- pagination  -->
+  <div class="w-25 m-auto my-3 ">
+    <ul class="pagination pagination-lg ">
+      <li class="page-item ">
+        <button (click)="changePage(1)" class="page-link">First</button>
+      </li>
+      @if (pagination.prev) {
+      <li class="page-item">
+        <button (click)="changePage(pagination.prev)" class="page-link">{{ pagination.prev }}</button>
+      </li>
+      }
+      <li class="page-item">
+        <button disabled class="page-link">{{ pagination.currentPage }}</button>
+      </li>
+      @if (pagination.next) {
+      <li class="page-item">
+        <button (click)="changePage(pagination.next)" class="page-link">{{ pagination.next }}</button>
+      </li>
+      }
+      <li class="page-item">
+        <button (click)="changePage(pagination.totalPages!)" class="page-link">Last</button>
+      </li>
+    </ul>
+  </div>
+
+</div>
