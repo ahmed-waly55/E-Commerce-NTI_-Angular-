@@ -1,0 +1,125 @@
+
+@if (product) {
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="image">
+        <img class="w-100" [src]="product.cover" [alt]="product.name">
+        <div class="row gx-2">
+          @for (image of product.images; track image) {
+          <div class="col-md-3">
+            <div class="items previews my-1 ">
+              <img class="w-100 rounded-4  shadow-sm" [src]="image" [alt]="product.name">
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="contanet">
+        <div class="fw-bolder fs-2">{{ product.subcategory.name }}</div>
+        <div class="fw-bolder fs-2">{{ product.name }}</div>
+        <p class="fw-light fs-1 py-2">{{ product.price|currency:'EUR' }}</p>
+        <p class="text-muted">(Additional tax may apply on checkout)</p>
+        <p class=" fw-bolder fs-4">{{ product.rateAvg|number:'1.1-1' }}
+          <span> <i class="fa-solid fa-star fa-1x text-warning"></i></span>
+        </p>
+
+        <div class="d-flex justify-content-start my-5">
+          <button class="shadow btn btn btn-primary ">Add to Wishlist</button>
+          <button class="shadow btn btn btn-success ms-1">Add to cart</button>
+        </div>
+
+        <div class="productDetails my-2">
+          <p class="fw-bolder fs-2">Product Details</p>
+          <p class="text-capitalize text-muted fs-5">{{ product.description }}</p>
+        </div>
+
+        <div class="email d-flex justify-content-between bg-light p-2">
+          <i class="fa-brands fa-rocketchat questions-icon text-primary fa-2x py-2 pe-4 ps-2"></i>
+          <p class="text-muted"> Have a question about our products at E-Store? Feel free to contact our representatives
+            via live chat or
+            email.</p>
+        </div>
+
+        <div class="delivery my-5">
+          <div class="d-flex justify-content-start ">
+            <i class="fa-solid fa-truck fa-1x py-2 pe-4 ps-2"></i>
+            <p class="text-muted fw-bolder fs-8"> Delivery done in 3 days from date of purchase.</p>
+          </div>
+          <p class="text-muted ps-2">Order now to get this product delivery.</p>
+        </div>
+
+        <div class="delivery-options my-4">
+          <div class="d-flex justify-content-start ">
+            <i class="fa-solid fa-filter fa-1x py-2 pe-4 ps-2"></i>
+            <p class="text-muted fw-bolder fs-8"> Delivery options.</p>
+          </div>
+          <p class="text-muted ps-2">View delivery options here.</p>
+        </div>
+
+        <hr class="m-5">
+
+        <div name="reviews">
+          <form>
+
+            <!-- textarea -->
+            <div class="form-floating">
+              <textarea formControlName="comment" class="form-control" placeholder="Leave a comment here"
+                id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Review</label>
+            </div>
+
+            <!-- rating -->
+            <div class="rating ">
+              <input formControlName="rate" type="radio" id="star5" name="rate" value="5" />
+              <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+              <input formControlName="rate" type="radio" id="star4" name="rate" value="4" />
+              <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+              <input formControlName="rate" type="radio" id="star3" name="rate" value="3" />
+              <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+              <input formControlName="rate" type="radio" id="star2" name="rate" value="2" />
+              <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+              <input formControlName="rate" type="radio" id="star1" name="rate" value="1" />
+              <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
+              <button class="btn btn-success shadow my-3 me-4 ">Add Review</button>
+              <p class="text-danger mt-2 fs-7">Rate required</p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="user-add-reviews">
+      <div class="head">
+        <hr class="my-3">
+        <h2 class="text-center fs-2 fw-light text-capitalize">Product Reviews</h2>
+        <hr class="my-3">
+      </div>
+      <div class="bady">
+        @for (review of product.reviews; track review._id) {
+        <div>
+          <h4>{{ review.user.name }}</h4>
+          <p>{{ review.comment }} - {{ review.rate }}
+            <span> <i class="fa-solid fa-star fa-1x text-warning"></i></span>
+          </p>
+          <p>{{ review.createdAt|date }}</p>
+          <button class="btn btn-primary shadow mt-2 mx-3">Update Review</button>
+          <button class="btn btn-danger shadow mt-2 mx-3">Delete Review</button>
+          <hr class="my-4">
+        </div>
+        } @empty {
+        <h2 class="text-capitalize text-center text-danger py-3 w-50 m-auto bg-dark ">No Reviews for this product yet.
+        </h2>
+        }
+      </div>
+
+    </div>
+
+  </div>
+</div>
+}@else {
+<h1 class="w-25 m-auto text-danger text-center p-5 my-5">{{ errorMsg }}</h1>
+}

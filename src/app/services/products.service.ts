@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { ApisService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -16,14 +17,16 @@ export class ProductsService {
     this.productsRoute = _ApisService.productsRoute;
   }
 
-  getProducts(
-    page: number = 1,
-    limit: number = 20,
-    sort: string = 'name',
-    search: string
-  ) {
+  getProducts( page: number = 1, limit: number = 20, sort: string = 'name', search: string):Observable<any> {
     return this._HttpClient.get(
       `${this.baseurl}${this.productsRoute}?page=${page}&limit=${limit}&sort=${sort}&search=${search}`,
+      { withCredentials: true }
+    );
+  }
+
+  getProduct(productId: string):Observable<any> {
+    return this._HttpClient.get(
+      `${this.baseurl}${this.productsRoute}/${productId}`,
       { withCredentials: true }
     );
   }
