@@ -42,8 +42,6 @@ export class ForgotPasswordComponent {
         this.sendMailFlag = true;
         this.completeSendFlag = false;
         this.toastr.success("code send successful");
-
-
       },
       error: err => {
         this.emailError = err.error.message;
@@ -66,7 +64,7 @@ export class ForgotPasswordComponent {
         this.emailError = err.error.message;
         this.toastr.error(err.error.message);
 
-        // console.log(err);
+        console.log(err);
       }
     })
   }
