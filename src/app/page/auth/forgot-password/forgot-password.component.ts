@@ -75,7 +75,7 @@ export class ForgotPasswordComponent {
         this.verifyCodeFlag = false;
         this.sendMailFlag = false;
         localStorage.removeItem('reset');
-        this._router.navigate(['/account/login']);
+        this._router.navigate(['/login']);
       },
       error: err => {
         if (err.status === 403) this.emailError = err.error.message
